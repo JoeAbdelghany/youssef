@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+// @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;800;900&display=swap');
+$fonts: ('Poppins', 'Bebas_Neue');
+@each $font in $fonts {
+    $font: '/assets/fonts/'+$font+'/index.css';
+    @import url($font);
+}
+// .blue {
+//  --main-color: hsl(353, 100%, 78%);
+// --spanish-gray: hsl(0, 0%, 60%);
+// --text-color: hsl(0, 0%, 47%);
+// --gold: hsl(29, 90%, 65%);
+// --bittersweet: hsl(0, 100%, 70%);
+// --free-color: hsl(152, 51%, 52%);
+// --davys-gray: hsl(0, 0%, 33%);a
+// --border-color: hsl(0, 0%, 93%);
+// --white-color: hsl(0, 100%, 100%);
+// --black-color: hsl(0, 0%, 13%);
+// --strong-color: hsl(0, 0%, 27%);
+// --header-width: 80px;
+// --header-color: #ffffff;
+// --blue-color: #287bff;
+// }
+:root {
+    --header-height: 70px;
+    --logoFontFamily: "Bebas Neue";
+    --mb: hsl(0, 0%, 93%);
+    --rounded: 0.25rem;
+    --bg: hsl(0, 0%, 98%);
+    --topIndex: 999;
+        // font weight
+    $fw:0;
+    @while $fw <= 900 {
+        $fw: $fw + 100;
+        --fw-#{$fw}:#{$fw};
+    }
+    // font size
+    @for $fs from 0 to 10 { 
+        --fs-#{$fs}-25: #{$fs}.25rem;
+        --fs-#{$fs}-5: #{$fs}.5rem;
+        --fs-#{$fs}-75: #{$fs}.75rem;
+        --fs-#{$fs}: #{$fs}rem;
+    }
+    // margin bottom
+    $i:0;
+    $positions: ("t","b","r","l","x","y","");
+    @for $i from 0 to 10 {
+        @each $position in $positions {
+            @each $t in ("m","p") {
+                --#{$t}#{$position}-#{$i}-25: #{$i}.25rem;
+                --#{$t}#{$position}-#{$i}-5: #{$i}.5rem;
+                --#{$t}#{$position}-#{$i}-75: #{$i}.75rem;
+                --#{$t}#{$position}-#{$i}: #{$i}rem;
+            }
+        }
+    }
+}
+body {
+    margin-top: var(--header-height);
+    background: var(--lc);
+    font: {
+        family: 'Poppins', sans-serif;
+        size: 16px;
+        weight: 400;
+    }
+}
+::selection {
+    background-color: var(--mc);
+    color: #fff;
+}
+    
+::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0.25rem;
+    height: 0.25rem;
+}
+    
+::-webkit-scrollbar-thumb {
+    background-color: var(--mc);
+    border-radius: 0.5rem;
+    width: 100%;
+}
+// ============================ //
+// === start formating code === //
+// ============================ //
+
+a {
+    &.active {
+        pointer-events: none;
+    }
+}
+
+section {
+    width:100%;
+    padding: 8rem 0rem 2rem 0rem;
+}
+
+// =========================== //
+// === create main classes === //
+// =========================== //
+
+.container {
+    margin-inline: auto;
+}
+.center {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.btn {
+    @extend .center;
+    max-height: 40px;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1.25rem;
+    // text-transform: uppercase;
+    opacity: 0.9;
+    transition: 0.4s;
+    &:hover {
+        opacity: 1;
+    }
+    &.fill {
+        background-color: var(--mc);
+        color: #fff;
+    }
+    &.empty {
+        background-color: var(--smc);
+        color: #fff;
+    }
+    font: {
+        size: var(--fs-1);
+        weight: var(--fw-500);
+    }
+}
+
+@each $color in ('lc','dc', 'mc','tf','smc','bc','wc') {
+    .bg-#{$color} {
+        background-color: var(--#{$color});
+    }
+    .#{$color} {
+        color: var(--#{$color});
+    }
+    .#{$color}h:hover {
+        color: var(--#{$color});
+    }
+}
+
+.tcl {
+    color: var(--tcl);
+}
+
+.desc {
+    color: var(--tcl);
+    font: {
+        size: 1rem;
+        weight: var(--fw-400);
+    }
+}
+
+h1 {
+    &.title {
+        color: var(--dc);
+        font: {
+            size: var(--fs-2-75);
+            weight: var(--fw-600);
+        }
+    }
+}
+
+
+.section_title {
+    @extend .center;
+    padding-block: 0rem 3rem;
+    color: var(--dc);
+    font: {
+        size: var(--fs-2-25);
+        weight: var(--fw-600);
+    }
+}

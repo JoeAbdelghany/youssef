@@ -1,0 +1,58 @@
+footer {
+    .container {
+            .content {
+                .navItems {
+                    .navItem  {
+                        h2 {
+                            position: relative;
+                            margin-bottom: var(--mb-1-5);
+                            padding-bottom: var(--mb-1);
+                            text-transform: capitalize;
+                            z-index:1;
+                            font: {
+                                size: var(--fs-1-5);
+                                weight: var(--fw-500);
+                            }
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
+                                width: 50px;
+                                height: 2px;
+                                background-color: var(--mc);
+                            }
+                        }
+                        ul {
+                            display: flex;
+                            flex-direction: column;
+                            row-gap: var(--mb-0-75);
+                            li {
+                                transition: all 0.3s ease;
+                                color: var(--tcl);
+                                cursor: pointer;
+                                a.active {
+                                    color: var(--dc);
+                                }
+                                &:hover {
+                                    color: var(--dc);
+                                    transform: translateX(10px);
+                                }
+                            }
+                        }
+                }
+            }
+        }
+        .end {
+            border-top: 2px solid var(--tcl);
+            .pages {
+                li {
+                    cursor: pointer;
+                    a.active {
+                        color: var(--mc);
+                    }
+                }
+            }
+        }
+    }
+}
