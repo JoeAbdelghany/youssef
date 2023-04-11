@@ -158,23 +158,14 @@ section {
     }
 }
 
-h1 {
-    &.title {
+$h-fonts: ('2-75','2-5','2-25','2','1-75','1-5');
+
+@for $i from 1 to 6 {
+    h#{$i} {
         color: var(--dc);
         font: {
-            size: var(--fs-2-75);
+            size: var(--fs-#{$h-fonts($i - 0)});
             weight: var(--fw-600);
         }
-    }
-}
-
-
-.section_title {
-    @extend .center;
-    padding-block: 0rem 3rem;
-    color: var(--dc);
-    font: {
-        size: var(--fs-2-25);
-        weight: var(--fw-600);
     }
 }

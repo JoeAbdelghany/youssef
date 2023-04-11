@@ -1,8 +1,14 @@
 import { Component } from 'react';
 import Link from 'next/link';
 import Logo from '../logo/logo';
-class Header extends Component {
+
+interface Props {
+    title: string,
+}
+
+class Header extends Component<Props> {
     render() {
+        const title = this.props.title;
        if (process.browser)  {
             window.addEventListener('scroll', () => {
                 let header:Element = document.querySelector('header') as HTMLElement;
@@ -21,7 +27,7 @@ class Header extends Component {
         return (
             <header className={`fixed top-0 left-0 w-full bg-lc`}>
                 <div className="container flex justify-between items-center h-full">
-                        <Logo />
+                        <Logo title={ title }/>
                         <ul className={`flex`}>
                             <li>
                                 <Link href="/">home</Link>

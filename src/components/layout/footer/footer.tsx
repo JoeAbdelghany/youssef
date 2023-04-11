@@ -1,23 +1,26 @@
 import { Component } from 'react';
 import Logo from '../logo/logo';
-// import { NavLink } from 'react-router-dom';
 import Link from 'next/link';
 import SocialMedia from '../socialMedia/socialMedia';
-// import styles from '@/styles/layout/footer/footer.module.scss';
 
+interface Props {
+    accounts: Object,
+    title: string,
+}
 
-class Footer extends Component {
+class Footer extends Component<Props> {
      render() {
+        const { title, accounts } = this.props;
         return (
             <footer className="w-full bg-lc pt-32">
                 <div className="container">
                         <div className="content flex justify-between mb-20">
                             <div className="grid gap-y-4 w-80">
-                                <Logo />
+                                <Logo title={ title }/>
                                 <p className="w-full desc">
                                     I love the intenet so much do you like it linke me you he she it any thing words letters &&  I realy need 6 words more then it  
                                 </p>
-                                <SocialMedia />
+                                <SocialMedia accounts={ accounts }/>
                             </div>
                             <div className="navItems flex gap-x-32">
                                 <div className="navItem">

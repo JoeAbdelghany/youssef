@@ -18,7 +18,6 @@ class Landing extends Component<Props> {
         const { title } = name ;
         const { jobTitles } = job ;
         const { accounts } = social;
-        const { facebook, instagram, linkedin, github } = accounts.businessAccounts;
         return(
             <section className={`${styles.landing} p-0`}>
                 <div className={`${styles.container} container h-full grid items-center grid-cols-2 relative`}>
@@ -41,7 +40,7 @@ class Landing extends Component<Props> {
                     </div>
                     <div className={`${styles.landingImage} justify-self-center`}></div>
                     <div className={`${styles.landingSocial} absolute right-0 bottom-8`}>
-                        <SocialMedia />
+                        <SocialMedia accounts={ accounts }/>
                     </div>
                 </div>
             </section>

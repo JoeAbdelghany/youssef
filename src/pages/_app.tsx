@@ -1,4 +1,6 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios';
+import Loading from '@/components/layout/loading/index';
 import Layout from '@/components/layout/layout';
 import '@/styles/globals.scss';
 import '@/styles/layout/logo/logo.scss';
@@ -14,7 +16,6 @@ import NextNProgress from 'nextjs-progressbar';
 // interface Props {
 //   Component: AppProps;
 //   pageProps: AppProps;
-//   data: any;
 // };
 // class App extends Component<Props> {
 //   render() {
@@ -25,7 +26,22 @@ import NextNProgress from 'nextjs-progressbar';
 //     );
 //   }
 // }
-function App({ Component, pageProps }: AppProps,) {
+
+const App = ({ Component, pageProps }: AppProps) => {
+  let url = 'http://127.0.0.1:8000/api/youssef';
+
+  const [data, setData] = useState(false);
+  
+  useEffect(() => {
+      (async ():Promise<void> => {
+        let res = await axios.get(url);
+        setData(res.data);
+      })()
+  }, [url]);
+  
+  if (!data) {
+    return <Loading />;
+  }else {
     return (
       <>
         <NextNProgress 
@@ -36,11 +52,12 @@ function App({ Component, pageProps }: AppProps,) {
           showOnShallow={false} 
           options={{ easing: 'ease', speed: 500 }} 
         />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </>
-  );
+        <Layout data={ data }>
+          <Component {...pageProps} />
+        </Layout>
+      </>
+    );
+  }
 }
 
 export default App;

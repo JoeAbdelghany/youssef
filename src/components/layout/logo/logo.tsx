@@ -1,18 +1,17 @@
 import { Component } from 'react';
 import Link from 'next/link';
-import axios from 'axios';
 
-class Logo extends Component {
+interface Props {
+    title: string,
+}
+
+class Logo extends Component<Props> {
     render() {
-            axios.get('http://127.0.0.1:8000/api/youssef').then(res => {
-                let data = res.data;
-                let logos = document.querySelectorAll('.logo h1');
-                logos.forEach( (ele:any) => (ele.innerHTML = data.title))
-            })
+        const title = this.props.title;
         return (
             <Link href="/" className="logo flex items-center">
-                <img src="/assets/images/logo/favicon-logo.png" className="bg-mc" alt="youssef"/>
-                <h1>youssef</h1>
+                <img src="/assets/images/logo/favicon-logo.png" className="bg-mc" alt={ title }/>
+                <h1>{ title }</h1>
             </Link>
         );
     }

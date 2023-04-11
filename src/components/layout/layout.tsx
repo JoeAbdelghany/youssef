@@ -4,19 +4,23 @@ import Main from './main/main';
 import Footer from './footer/footer';
 import ScrollBtn from './scrollBtn/scrollBtn';
 interface Props {
-    children: ReactNode
+    children: ReactNode,
+    data: any,
 }
 class Layout extends Component<Props> {
     render() {
+        const { data, children } = this.props;
+        const { user, title} = data;
+        const { social } = user;
+        const { accounts } = social;
         return(
             <>
-                <Header />
+                <Header title={title} />
                 <Main>
-                    { this.props.children }
+                    { children }
                 </Main>
                 <ScrollBtn />
-                <Footer />
-                {/* <script src="/assts/js/main.js"></script> */}
+                <Footer title={title} accounts={accounts}/>
             </>
         );
     }
