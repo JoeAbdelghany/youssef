@@ -2,7 +2,6 @@
   "name": "youssef",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://joeabdelghany.000webhostapp.com/",
   "scripts": {
     "dev": "next dev -H 127.0.0.1",
     "build": "next build",
